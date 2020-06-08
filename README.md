@@ -1,6 +1,4 @@
-# Fitness_Parameters
-Fitness Parameters
-setwd("C:/Practical Machine Learning Course") # based on where the datasets are stored
+setwd("C:/Practical Machine Learning Course")
 library(readr)
 library(dplyr)
 library(kernlab)
@@ -45,4 +43,6 @@ confusionMatrix(p1,testing$classe)
 #now using validation
 p2<- predict(mod1,newdata=m2)
 summary(p2)
+m2$classe<- p2 # updating the values in pml-testing csv 
+write.csv(m2,"pml-final submission.csv",row.names=FALSE)
 
